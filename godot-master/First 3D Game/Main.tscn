@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Floor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Ramp.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Ball.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Goal.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Box.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Player.gd" type="Script" id=8]
+[ext_resource path="res://assets/maujoe.camera_control/scripts/camera_control.gd" type="Script" id=9]
+
+[node name="Main" type="Spatial"]
+
+[node name="DirectionalLight2" type="DirectionalLight" parent="."]
+transform = Transform( 0.389517, 0.690333, -0.609686, -0.519074, 0.711366, 0.473836, 0.760814, 0.131906, 0.635423, -0.0213604, 14.3449, 12.3837 )
+shadow_enabled = true
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 17.5296, 2.06083, 17.9536 )
+script = ExtResource( 9 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 17.5296, 2.06083, 17.9536 )
+script = ExtResource( 8 )
+
+[node name="Ball" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.52264, 8.9802, -10.2902 )
+
+[node name="Floor" parent="." instance=ExtResource( 2 )]
+transform = Transform( -0.999942, 0, 0.0107684, 0, 1, 0, -0.0107684, 0, -0.999942, 17.5121, 1.90735e-06, 16.5672 )
+
+[node name="Middle" parent="." instance=ExtResource( 2 )]
+transform = Transform( -0.999942, 0, 0.0107684, 0, 1, 0, -0.0107684, 0, -0.999942, 17.7876, 3.32869, -9.01436 )
+
+[node name="Area" parent="Middle" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.28241, 1.5834, 4.81825 )
+
+[node name="EndPlatfrom" parent="." instance=ExtResource( 2 )]
+transform = Transform( -0.999942, 0, 0.0107684, 0, 1, 0, -0.0107684, 0, -0.999942, -9.41335, 7.43505, -9.84356 )
+
+[node name="Goal" parent="EndPlatfrom" instance=ExtResource( 6 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 6, 0, -1, 0, -1.62921e-07, 8.49264, 6.28523, 6.19975 )
+
+[node name="Wall" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.999942, 0, 0.0107684, 0, 1, 0, -0.0107684, 0, -0.999942, 7.95097, 0.738502, 16.6054 )
+
+[node name="Wall2" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.0107682, 0, -0.999942, 0, 1, 0, 0.999942, 0, -0.0107682, 17.455, 0.746488, 26.3202 )
+
+[node name="Wall3" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.999942, 0, 0.0107684, 0, 1, 0, -0.0107684, 0, -0.999942, 27.1659, 0.757542, 16.7781 )
+
+[node name="Ramp1" parent="." instance=ExtResource( 3 )]
+transform = Transform( -0.0497844, -0.000354279, -2.62964, -2.05807, 0.0739086, -9.02896e-08, 4.62309, 0.0328981, -0.0283183, 17.6789, 1.71955, 5.53098 )
+
+[node name="Ramp2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 4.60697, 0.0334711, -0.0283177, -2.09391, 0.0736508, -6.65519e-09, 0.0496109, 0.000360439, 2.62964, 5.08466, 5.78174, -8.99846 )
